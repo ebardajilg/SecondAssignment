@@ -10,7 +10,13 @@ package org.escoladeltreball.secondassignment;
 public abstract class BankImpl implements Bank {
 
 	private String owner;
-	private double balance;
+	protected double balance;
+
+	public BankImpl(String owner, double balance) {
+		super();
+		this.owner = owner;
+		this.balance = balance;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -58,6 +64,11 @@ public abstract class BankImpl implements Bank {
 	@Override
 	public boolean isBalanceNegative() {
 		return balance < 0;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("BankImpl [owner=%s, balance=%s]", owner, balance);
 	}
 
 }

@@ -9,10 +9,17 @@ package org.escoladeltreball.secondassignment;
  */
 public class CashBankAccount extends BankImpl {
 
+	public CashBankAccount(String owner, double balance) {
+		super(owner, balance);
+	}
+
 	@Override
 	public void withdraw(double euros) throws Exception {
-		// TODO Auto-generated method stub
-		
+		if (balance > euros) {
+			balance -= euros;
+		} else {
+			throw new Exception("Insufficient balance Exception");
+		}
 	}
 
 }
