@@ -9,49 +9,55 @@ package org.escoladeltreball.secondassignment;
  */
 public abstract class BankImpl implements Bank {
 
-	/* (non-Javadoc)
+	private String owner;
+	private double balance;
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.escoladeltreball.secondassignment.Bank#withdraw(double)
 	 */
 	@Override
-	public void withdraw(double euros) throws Exception {
-		// TODO Auto-generated method stub
+	public abstract void withdraw(double euros) throws Exception;
 
-	}
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.escoladeltreball.secondassignment.Bank#deposit(double)
 	 */
 	@Override
 	public void deposit(double euros) {
-		// TODO Auto-generated method stub
-
+		balance += euros;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.escoladeltreball.secondassignment.Bank#toDollars()
 	 */
 	@Override
 	public double toDollars() {
-		// TODO Auto-generated method stub
-		return 0;
+		return balance * Bank.DOLAR_RATE;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.escoladeltreball.secondassignment.Bank#getBalance()
 	 */
 	@Override
 	public double getBalance() {
-		// TODO Auto-generated method stub
-		return 0;
+		return balance;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.escoladeltreball.secondassignment.Bank#isBalanceNegative()
 	 */
 	@Override
 	public boolean isBalanceNegative() {
-		// TODO Auto-generated method stub
-		return false;
+		return balance < 0;
 	}
 
 }
