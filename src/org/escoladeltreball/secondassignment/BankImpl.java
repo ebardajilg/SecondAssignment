@@ -33,7 +33,9 @@ public abstract class BankImpl implements Bank {
 	 */
 	@Override
 	public void deposit(double euros) {
-		balance += euros;
+		if (euros > 0) {
+			balance += euros;
+		}
 	}
 
 	/*

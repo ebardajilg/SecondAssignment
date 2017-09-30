@@ -61,6 +61,8 @@ public class CashBankAccountTest {
 			assertEquals(500.0, cashAccount.getBalance(), 1e-4);
 			cashAccount.withdraw(125.0);
 			assertEquals(375.0, cashAccount.getBalance(), 1e-4);
+			cashAccount.withdraw(-100.0);
+			assertEquals(375.0, cashAccount.getBalance(), 1e-4);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -79,40 +81,49 @@ public class CashBankAccountTest {
 	 * Test method for
 	 * {@link org.escoladeltreball.secondassignment.BankImpl#deposit(double)}.
 	 */
-	@Ignore
-	@Test
+	@Test(timeout = 100)
 	public final void testDeposit() {
-		fail("Not yet implemented"); // TODO
+		cashAccount.deposit(199.99);
+		assertEquals(1_199.99, cashAccount.getBalance(), 1e-4);
 	}
 
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.secondassignment.BankImpl#toDollars()}.
 	 */
-	@Ignore
 	@Test
 	public final void testToDollars() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(1400.0, cashAccount.toDollars(), 1.0e-4);
 	}
 
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.secondassignment.BankImpl#getBalance()}.
 	 */
-	@Ignore
 	@Test
 	public final void testGetBalance() {
-		fail("Not yet implemented"); // TODO
+		try {
+			cashAccount.withdraw(1.99);
+			cashAccount.deposit(1.99);
+			assertEquals(1000.0, cashAccount.getBalance(), 1.0e-4);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.secondassignment.BankImpl#isBalanceNegative()}.
 	 */
-	@Ignore
 	@Test
 	public final void testIsBalanceNegative() {
-		fail("Not yet implemented"); // TODO
+		try {
+			cashAccount.withdraw(1.99);
+			cashAccount.deposit(1.99);
+			assertFalse(cashAccount.isBalanceNegative());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 
 }

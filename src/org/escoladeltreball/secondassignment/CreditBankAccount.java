@@ -15,10 +15,12 @@ public class CreditBankAccount extends BankImpl {
 
 	@Override
 	public void withdraw(double euros) throws Exception {
-		if (balance - euros >= Bank.MIN_BALANCE) {
-			balance -= euros;
-		} else {
-			throw new Exception("Insufficient balance Exception");
+		if (euros > 0) {
+			if (balance - euros >= Bank.MIN_BALANCE) {
+				balance -= euros;
+			} else {
+				throw new Exception("Insufficient balance Exception");
+			}
 		}
 	}
 

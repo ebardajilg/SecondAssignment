@@ -18,14 +18,13 @@ import org.junit.Test;
  */
 public class CreditBankAccountTest {
 
-	private static Bank creditAccount; // = new CreditBankAccount();
+	private Bank creditAccount; 
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		creditAccount = new CreditBankAccount("Joan", 1000);
 	}
 
 	/**
@@ -33,7 +32,6 @@ public class CreditBankAccountTest {
 	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		creditAccount = null;
 	}
 
 	/**
@@ -41,6 +39,7 @@ public class CreditBankAccountTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		creditAccount = new CreditBankAccount("Joan", 1000);
 	}
 
 	/**
@@ -48,56 +47,29 @@ public class CreditBankAccountTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		creditAccount = null;
 	}
 
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.secondassignment.BankImpl#withdraw(double)}.
 	 */
-	@Ignore
 	@Test
 	public final void testWithdraw() {
-		fail("Not yet implemented"); // TODO
+		try {
+			creditAccount.withdraw(1100.0);
+			assertEquals(-100.0, creditAccount.getBalance(), 1.0e-4);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * Test method for
-	 * {@link org.escoladeltreball.secondassignment.BankImpl#deposit(double)}.
+	 * {@link org.escoladeltreball.secondassignment.BankImpl#withdraw(double)}.
 	 */
-	@Ignore
-	@Test
-	public final void testDeposit() {
-		fail("Not yet implemented"); // TODO
+	@Test(expected = Exception.class)
+	public final void testWithdrawException() throws Exception {
+		creditAccount.withdraw(1300.1);
 	}
-
-	/**
-	 * Test method for
-	 * {@link org.escoladeltreball.secondassignment.BankImpl#toDollars()}.
-	 */
-	@Ignore
-	@Test
-	public final void testToDollars() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for
-	 * {@link org.escoladeltreball.secondassignment.BankImpl#getBalance()}.
-	 */
-	@Ignore
-	@Test
-	public final void testGetBalance() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for
-	 * {@link org.escoladeltreball.secondassignment.BankImpl#isBalanceNegative()}.
-	 */
-	@Ignore
-	@Test
-	public final void testIsBalanceNegative() {
-		fail("Not yet implemented"); // TODO
-	}
-
 }

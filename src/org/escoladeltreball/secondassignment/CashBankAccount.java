@@ -15,10 +15,12 @@ public class CashBankAccount extends BankImpl {
 
 	@Override
 	public void withdraw(double euros) throws Exception {
-		if (balance > euros) {
-			balance -= euros;
-		} else {
-			throw new Exception("Insufficient balance Exception");
+		if (euros > 0) {
+			if (balance > euros) {
+				balance -= euros;
+			} else {
+				throw new Exception("Insufficient balance Exception");
+			}
 		}
 	}
 
